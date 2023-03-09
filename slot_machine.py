@@ -8,17 +8,17 @@ ROWS = 3
 COLS = 3
 
 symbols_quantity = {
-    "A": 2,
-    "B": 4,
-    "C": 6,
-    "D": 8
+    "🍀": 2,
+    "🍉": 3,
+    "🧨": 4,
+    "🪐": 5
 }
 
 symbols_multiplier = {
-    "A": 5,
-    "B": 4,
-    "C": 3,
-    "D": 2
+    "🍀": 16,
+    "🍉": 8,
+    "🧨": 4,
+    "🪐": 2
 }
 
 def check_winnings(columns, lines, bet, values):
@@ -44,13 +44,13 @@ def gen_slot_machine_items(rows, cols, symbols_quantity):
         for _ in range(symbol_count):
             all_symbols.append(symbol)
 
-    columns = []  #rows
+    columns = []
     for _ in range(cols):                          
         column = []
-        current_symbols = all_symbols[:]          
+        current_symbols = all_symbols[:]       
         for _ in range(rows):                    
-            value = random.choice(current_symbols) 
-            current_symbols.remove(value)         
+            value = random.choice(current_symbols)  
+            current_symbols.remove(value)           
             column.append(value)                   
 
         columns.append(column) 
