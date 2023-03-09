@@ -7,14 +7,43 @@ MIN_BET = 1
 ROWS = 3
 COLS = 3
 
-symbol_count = {
+symbols = {
     "A": 2,
     "B": 4,
     "C": 6,
     "D": 8
 }
 
-# def gte_slot_machine_spin(rows, cols, symbols):
+#generate items that will be in the slot machine
+
+def gte_slot_machine_spin(rows, cols, symbols):
+    all_symbols = []
+    for symbol, symbol_count in symbols.items():
+        for _ in range(symbol_count):
+            all_symbols.append(symbol)
+
+    columns = []  #rows
+    for _ in range(cols):                          
+        column = []
+        current_symbols = all_symbols[:]            #copy not reference of all symboles
+        for _ in range(rows):                    
+            value = random.choice(current_symbols)  #picks random value from list
+            current_symbols.remove(value)           #don't pick it again
+            column.append(value)                   
+
+        columns.append(column) 
+
+    return columns
+
+def print_slot_machine(columns):  #flipping aka transposing
+    for row in range(len(columns[0])):
+        for i, column in enumerate(columns):
+            if i != len(columns) - 1:
+                print(column[row], "|")
+            else:
+                print(columns[row])
+
+
 
 
 def deposit():
